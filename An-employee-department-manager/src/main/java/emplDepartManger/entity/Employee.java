@@ -1,27 +1,22 @@
 
 package emplDepartManger.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-/**
- * @author Vivek Singh
- *
- */
-
-@Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name = "employee")
 public class Employee extends Auditable{
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +24,17 @@ public class Employee extends Auditable{
 
 	    private String name;
 
-	    @ManyToOne
-	    @JoinColumn(name = "department_id")
-	    @JsonBackReference // Breaks infinite recursion
-	    private Department department;
+	    // Other employee fields
+
+	    @ManyToMany(fetch = FetchType.LAZY)
+	    @JoinTable(
+	        name = "employee_department",
+	        joinColumns = @JoinColumn(name = "employee_id"),
+	        inverseJoinColumns = @JoinColumn(name = "department_id")
+	    )
+	    private Set<Department> departments;
 }
+
+
+
 

@@ -37,12 +37,7 @@ public class DepartmentService {
 		return departmentRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFound("department with given id is not found " + id));
 	}
-	
-	public List<EmployeeCountPerDepartmentDTO> getEmployeeCountPerDepartment() {
-        List<Object[]> results = departmentRepository.getEmployeeCountPerDepartment();
-        return results.stream()
-                .map(obj -> new EmployeeCountPerDepartmentDTO((String) obj[0], (Long) obj[1]))
-                .collect(Collectors.toList());
-    }
+
+
 
 }

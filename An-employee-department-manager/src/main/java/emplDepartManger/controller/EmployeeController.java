@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import emplDepartManger.entity.Department;
 import emplDepartManger.entity.Employee;
+import emplDepartManger.entity.EmployeeCountPerDepartmentDTO;
 import emplDepartManger.service.EmployeeService;
 
 @RestController
@@ -45,17 +47,15 @@ public class EmployeeController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     
-    @GetMapping("/department/{departmentId}")
-    public ResponseEntity<List<Employee>> getEmployeesByDepartmentId(@PathVariable Long departmentId) {
-        List<Employee> employees = employeeService.getEmployeesByDepartmentId(departmentId);
-        if (employees.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(employees, HttpStatus.OK);
+	
+    @GetMapping("/employee-departments-info")
+    public List<EmployeeCountPerDepartmentDTO> getEmployeeAndDepartmentInfo() {
+        return employeeService.findEmployeeAndDepartmentInfo();
     }
+    }
+	 
     
     
 
     
-}
 

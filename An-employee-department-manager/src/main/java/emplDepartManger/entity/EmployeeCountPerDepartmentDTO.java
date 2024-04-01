@@ -5,6 +5,7 @@ package emplDepartManger.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Vivek Singh
@@ -12,11 +13,13 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeCountPerDepartmentDTO {
 	
-	private String departmentName;
-    private Long employeeCount;
-
-   
+	 
+	 private Long employeeID;
+	    private String employeeName;
+	    private Long departmentID;
+	    private String departmentName;
 
 }

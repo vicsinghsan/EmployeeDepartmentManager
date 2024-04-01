@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import emplDepartManger.entity.Department;
+import emplDepartManger.entity.Employee;
 import emplDepartManger.entity.EmployeeCountPerDepartmentDTO;
 import emplDepartManger.service.DepartmentService;
 
@@ -45,10 +46,17 @@ public class DepartmentController {
         return ResponseEntity.ok(fetchedData);
     }
     
-    @GetMapping("/employee-count")
-    public List<EmployeeCountPerDepartmentDTO> getEmployeeCountPerDepartment() {
-        return departmentService.getEmployeeCountPerDepartment();
-    }
+	/*
+	 * @GetMapping("/employee-count") public List<EmployeeCountPerDepartmentDTO>
+	 * getEmployeeCountPerDepartment() { return
+	 * departmentService.getEmployeeCountPerDepartment(); }
+	 */
+    
+	/*
+	 * public List<Employee> getEmployeesByDepartment(String departmentName) {
+	 * Department department = departmentService.findByDeptName(departmentName); if
+	 * (department != null) { return department.getEmployees(); } return null; }
+	 */
 
 }
 
