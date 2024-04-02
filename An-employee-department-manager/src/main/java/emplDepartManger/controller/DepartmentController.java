@@ -46,17 +46,6 @@ public class DepartmentController {
         return ResponseEntity.ok(fetchedData);
     }
     
-	/*
-	 * @GetMapping("/employee-count") public List<EmployeeCountPerDepartmentDTO>
-	 * getEmployeeCountPerDepartment() { return
-	 * departmentService.getEmployeeCountPerDepartment(); }
-	 */
-    
-	/*
-	 * public List<Employee> getEmployeesByDepartment(String departmentName) {
-	 * Department department = departmentService.findByDeptName(departmentName); if
-	 * (department != null) { return department.getEmployees(); } return null; }
-	 */
 
 }
 

@@ -50,12 +50,16 @@ public class EmployeeService {
 	 private List<EmployeeCountPerDepartmentDTO> mapToObject(List<Object[]> resultList) {
 		    return resultList.stream()
 		            .map(obj -> new EmployeeCountPerDepartmentDTO(
-		                    Long.valueOf(obj[0].toString()), // Assuming employeeID is a Long
-		                    obj[1].toString(), // Assuming employeeName is a String
-		                    Long.valueOf(obj[2].toString()), // Assuming departmentID is a Long
-		                    obj[3].toString())) // Assuming departmentName is a String
+		                    Long.valueOf(obj[0].toString()),
+		                    obj[1].toString(), 
+		                    Long.valueOf(obj[2].toString()), 
+		                    obj[3].toString())) 
 		            .collect(Collectors.toList());
 		}
+	 
+	 public List<Object[]> getEmployeesPerDepartment() {
+	        return employeeRepository.countEmployeesPerDepartment();
+	    }
 
 
 }

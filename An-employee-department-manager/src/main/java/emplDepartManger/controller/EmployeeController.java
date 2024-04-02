@@ -52,6 +52,13 @@ public class EmployeeController {
     public List<EmployeeCountPerDepartmentDTO> getEmployeeAndDepartmentInfo() {
         return employeeService.findEmployeeAndDepartmentInfo();
     }
+    
+    @GetMapping("/employees-per-department")
+    public List<Object[]> getEmployeesPerDepartment() {
+        return employeeService.getEmployeesPerDepartment();
+    }
+    
+    
     }
 	 
     
